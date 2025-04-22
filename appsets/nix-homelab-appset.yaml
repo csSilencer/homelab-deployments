@@ -8,7 +8,7 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/skhtor/homelab-deployments.git
+        repoURL: https://github.com/csSilencer/homelab-deployments
         revision: HEAD
         directories:
           - path: apps/namespaces/*/*
@@ -21,7 +21,7 @@ spec:
 
       # Source of the application manifests
       source:
-        repoURL: https://github.com/skhtor/homelab-deployments.git
+        repoURL: https://github.com/csSilencer/homelab-deployments
         targetRevision: HEAD
         path: '{{ .path.path }}'
       

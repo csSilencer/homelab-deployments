@@ -101,7 +101,7 @@ configs:
 
   repositories:
     homelab-deployments:
-      url: git@github.com:skhtor/homelab-deployments.git
+      url: git@github.com:csSilencer/homelab-deployments.git
 
 ### Disabled components:
 
