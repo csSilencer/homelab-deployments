@@ -13,6 +13,8 @@ server:
       - argocd.home
 
 repoServer:
+  securityContext:
+    fsGroup: 999
   autoscaling:
     enabled: true
     minReplicas: 1
