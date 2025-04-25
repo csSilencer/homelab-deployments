@@ -13,8 +13,15 @@ server:
       - argocd.home
 
 repoServer:
-  securityContext:
-    fsGroup: 999
+  containerSecurityContext:
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: false
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+      - ALL
   autoscaling:
     enabled: true
     minReplicas: 1
