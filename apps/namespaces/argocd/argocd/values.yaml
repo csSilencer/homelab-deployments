@@ -46,6 +46,8 @@ repoServer:
       value: /usr/local/bin/helm
     - name: HELM_SECRETS_IGNORE_MISSING_VALUES
       value: "true"
+    - name: TMPDIR
+      value: /tmp
   volumes:
     - name: custom-tools
       emptyDir: {}
