@@ -84,7 +84,7 @@ repoServer:
 configs:
   cm:
     url: http://argocd.home
-    kustomize.buildOptions: '--enable-helm'
+    kustomize.buildOptions: --enable-helm
     helm.valuesFileSchemes: >-
       secrets+gpg-import, secrets+gpg-import-kubernetes,
       secrets+age-import, secrets+age-import-kubernetes,
