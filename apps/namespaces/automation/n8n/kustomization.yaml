@@ -7,3 +7,4 @@ helmCharts:
   namespace: automation
   version: 1.0.6
   repo: oci://8gears.container-registry.com/library
+  valuesFile: values.yaml
