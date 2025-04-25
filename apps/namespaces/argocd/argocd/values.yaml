@@ -79,7 +79,6 @@ repoServer:
       securityContext:
         runAsUser: 999
         runAsGroup: 999
-        fsGroup: 999
       env:
         - name: HELM_SECRETS_VERSION
           value: "4.6.2"
