@@ -14,6 +14,13 @@ server:
 
 repoServer:
   containerSecurityContext:
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
+    securityContext:
+      runAsUser: 999
+      runAsGroup: 999
+      fsGroup: 999
     runAsNonRoot: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -29,6 +36,10 @@ repoServer:
     create: true
     name: "argocd-repo-server"
     automountServiceAccountToken: true
+  securityContext:
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
   env:
     - name: HELM_PLUGINS
       value: /custom-tools/helm-plugins/
