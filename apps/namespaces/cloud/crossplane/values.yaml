@@ -211,8 +211,7 @@ extraVolumeMountsCrossplane: {}
 
 # -- To add arbitrary Kubernetes Objects during a Helm Install
 extraObjects:
-  awsDeploymentRuntimeConfig:
-    apiVersion: pkg.crossplane.io/v1beta1
+  - apiVersion: pkg.crossplane.io/v1beta1
     kind: DeploymentRuntimeConfig
     metadata:
       name: aws-provider-runtime
