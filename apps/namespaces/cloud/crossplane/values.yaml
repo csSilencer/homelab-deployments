@@ -219,7 +219,7 @@ extraObjects:
       name: provider-aws
     spec:
       credentials:
-        source: None
+        source: PodIdentity
   - apiVersion: external-secrets.io/v1beta1
     kind: ExternalSecret
     metadata:
