@@ -278,12 +278,3 @@ extraObjects:
           remoteRef:
             key: "aws-ristovi-credentials"
             property: password
-  - apiVersion: s3.aws.upbound.io/v1beta1
-    kind: Bucket
-    metadata:
-      name: my-blari-fargeen-crossplane-booket
-    spec:
-      forProvider:
-        region: ap-southeast-2
-      providerConfigRef:
-        name: provider-aws
