@@ -81,7 +81,7 @@ repoServer:
         runAsGroup: 999
       env:
         - name: HELM_SECRETS_VERSION
-          value: "4.6.2"
+          value: "4.6.5"
         - name: KUBECTL_VERSION
           value: "1.31.3"
         - name: SOPS_VERSION
