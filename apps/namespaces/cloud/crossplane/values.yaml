@@ -222,6 +222,7 @@ extraObjects:
         source: Secret
         secretRef:
           name: aws-credentials-crossplane-fmt
+          namespace: cloud
           key: creds
   - apiVersion: external-secrets.io/v1beta1
     kind: ExternalSecret
