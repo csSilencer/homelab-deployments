@@ -51,6 +51,7 @@ args: []
 provider:
   # -- A list of Provider packages to install.
   packages:
+    - xpkg.upbound.io/upbound/provider-family-aws:v1.17.0
     - xpkg.upbound.io/upbound/provider/aws-s3:v1.1.0
 
 configuration:
@@ -243,3 +244,12 @@ extraObjects:
           key: "aws-ristovi-credentials"
           # 1password-field
           property: password
+  - apiVersion: s3.aws.upbound.io/v1beta1
+    kind: Bucket
+    metadata:
+      name: test-bucket-crossplane
+    spec:
+      forProvider:
+        region: us-east-1
+      providerConfigRef:
+        name: default
