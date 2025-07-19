@@ -50,7 +50,8 @@ args: []
 
 provider:
   # -- A list of Provider packages to install.
-  packages: []
+  packages:
+    - xpkg.upbound.io/upbound/provider/aws-s3:v1.1.0
 
 configuration:
   # -- A list of Configuration packages to install.
@@ -211,6 +212,13 @@ extraObjects:
                     # Optional: use a specific region
                     - name: AWS_REGION
                       value: ap-southeast-2
+  - apiVersion: aws.upbound.io/v1beta1
+    kind: ProviderConfig
+    metadata:
+      name: provider-aws
+    spec:
+      credentials:
+        source: InjectedIdentity
   - apiVersion: external-secrets.io/v1beta1
     kind: ExternalSecret
     metadata:
