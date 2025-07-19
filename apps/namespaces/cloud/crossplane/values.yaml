@@ -253,7 +253,6 @@ extraObjects:
     metadata:
       name: aws-credentials-crossplane-fmt
     spec:
-      refreshInterval: 1h
       secretStoreRef:
         name: op-secret-store
         kind: ClusterSecretStore
