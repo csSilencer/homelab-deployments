@@ -219,7 +219,7 @@ extraObjects:
       name: provider-aws
     spec:
       credentials:
-        source: InjectedIdentity
+        source: None
   - apiVersion: external-secrets.io/v1beta1
     kind: ExternalSecret
     metadata:
@@ -252,4 +252,4 @@ extraObjects:
       forProvider:
         region: us-east-1
       providerConfigRef:
-        name: default
+        name: provider-aws
