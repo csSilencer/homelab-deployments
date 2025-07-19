@@ -11,3 +11,5 @@ helmCharts:
     operator:
       token:
         key: onepass-homelab-connect-token
+    connect:
+      serviceType: ClusterIP
