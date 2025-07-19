@@ -21,7 +21,11 @@ image:
 # -- Add `nodeSelectors` to the Crossplane pod deployment.
 nodeSelector: {}
 # -- Add `tolerations` to the Crossplane pod deployment.
-tolerations: []
+tolerations:
+  - key: foo
+    operator: "Equal"
+    value: "bar"
+    effect: "NoSchedule"
 # -- Add `affinities` to the Crossplane pod deployment.
 affinity: {}
 # -- Add `topologySpreadConstraints` to the Crossplane pod deployment.
@@ -95,11 +99,16 @@ rbacManager:
   # -- Enable [leader election](https://docs.crossplane.io/latest/concepts/pods/#leader-election) for the RBAC Manager pod.
   leaderElection: true
   # -- Add custom arguments to the RBAC Manager pod.
-  args: []
+  args:
+    - foo
   # -- Add `nodeSelectors` to the RBAC Manager pod deployment.
   nodeSelector: {}
   # -- Add `tolerations` to the RBAC Manager pod deployment.
-  tolerations: []
+  tolerations:
+    - key: foo
+      operator: "Equal"
+      value: "bar"
+      effect: "NoSchedule"
   # -- Add `affinities` to the RBAC Manager pod deployment.
   affinity: {}
   # -- Add `topologySpreadConstraints` to the RBAC Manager pod deployment.
