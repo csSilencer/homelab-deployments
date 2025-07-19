@@ -16,6 +16,11 @@ helmCharts:
     ingressRoute:
       dashboard:
         enabled: true
+    port:
+      web:
+        exposedPort: 8080
+      websecure:
+        exposedPort: 8443
 - name: traefik-crds
   releaseName: traefik-crds
   namespace: networking
