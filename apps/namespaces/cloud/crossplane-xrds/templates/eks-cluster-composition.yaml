@@ -71,9 +71,9 @@ spec:
         forProvider:
           clusterNameSelector:
             matchControllerRef: true
-          nodeRoleSelector:
+          nodeRoleArnSelector:
             matchControllerRef: true
-          subnetSelector:
+          subnetIdSelector:
             matchLabels:
               type: subnet
               visibility: private
