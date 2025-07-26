@@ -282,6 +282,8 @@ spec:
           kubernetesGroups:
             - system:bootstrappers
             - system:nodes
+          principalArnFromRoleRef:
+            name: placeholder
           principalArnFromRoleSelector:
             matchControllerRef: true
     patches:
@@ -289,6 +291,12 @@ spec:
         patchSetName: metadata
       - fromFieldPath: spec.id
         toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
+      - fromFieldPath: spec.id
+        toFieldPath: spec.forProvider.principalArnFromRoleRef.name
+        transforms:
+        - type: string
+          string:
+            fmt: "%s-nodegroup"
       - fromFieldPath: spec.id
         toFieldPath: spec.forProvider.principalArnFromRoleSelector.matchLabels.name
         transforms:
