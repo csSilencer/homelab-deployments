@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+- name: eks-cluster-xrd
+  releaseName: eks-cluster-xrd
+  namespace: crossplane-xrds
+  version: 0.0.0
+  path: eks-cluster-xrd

@@ -53,6 +53,8 @@ provider:
   packages:
     - xpkg.upbound.io/upbound/provider-family-aws:v1.17.0
     - xpkg.upbound.io/upbound/provider-aws-s3:v1.1.0
+    - xpkg.upbound.io/upbound/provider-aws-ec2:v1
+    - xpkg.upbound.io/upbound/provider-aws-eks:v1
 
 configuration:
   # -- A list of Configuration packages to install.
