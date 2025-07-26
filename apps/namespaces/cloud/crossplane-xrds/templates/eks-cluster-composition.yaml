@@ -9,7 +9,7 @@ spec:
   compositeTypeRef:
     apiVersion: prodready.cluster/v1alpha1
     kind: CompositeCluster
-  writeConnectionSecretsToNamespace: crossplane-system
+  writeConnectionSecretsToNamespace: cloud
   patchSets:
   - name: metadata
     patches:
