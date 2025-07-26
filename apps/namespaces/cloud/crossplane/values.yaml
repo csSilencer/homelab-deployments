@@ -55,6 +55,8 @@ provider:
     - xpkg.upbound.io/upbound/provider-aws-s3:v1.1.0
     - xpkg.upbound.io/upbound/provider-aws-ec2:v1
     - xpkg.upbound.io/upbound/provider-aws-eks:v1
+    - xpkg.upbound.io/upbound/provider-kubernetes:v0
+    - xpkg.upbound.io/upbound/provider-helm:v0
 
 configuration:
   # -- A list of Configuration packages to install.
@@ -280,3 +282,14 @@ extraObjects:
           remoteRef:
             key: "aws-ristovi-credentials"
             property: password
+
+# Example s3 bucket
+# - apiVersion: s3.aws.upbound.io/v1beta1
+#   kind: Bucket
+#   metadata:
+#     name: my-blari-fargeen-crossplane-booket
+#   spec:
+#     forProvider:
+#       region: ap-southeast-2
+#     providerConfigRef:
+#       name: provider-aws
