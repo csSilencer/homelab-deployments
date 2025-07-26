@@ -30,6 +30,8 @@ spec:
             subnetIdSelector:
                matchLabels:
                   type: subnet
+          accessConfig:
+            authenticationMode: API
     patches:
     - type: PatchSet
       patchSetName: metadata
