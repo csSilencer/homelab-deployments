@@ -508,7 +508,7 @@ spec:
   - name: elastic-ip-1
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
-        kind: Address
+        kind: EIP
         metadata:
           labels:
             type: eip-1
@@ -522,7 +522,7 @@ spec:
   - name: elastic-ip-2
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
-        kind: Address
+        kind: EIP
         metadata:
           labels:
             type: eip-2
