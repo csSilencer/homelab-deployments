@@ -31,7 +31,7 @@ spec:
                matchLabels:
                   type: subnet
           accessConfig:
-            authenticationMode: API
+            authenticationMode: API_AND_CONFIG_MAP
     patches:
     - type: PatchSet
       patchSetName: metadata
