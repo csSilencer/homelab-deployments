@@ -282,11 +282,11 @@ spec:
           kubernetesGroups:
             - system:bootstrappers
             - system:nodes
+          principalArnFromRoleSelector:
+            matchControllerRef: true
     patches:
       - type: PatchSet
         patchSetName: metadata
-      - fromFieldPath: spec.id
-        toFieldPath: spec.forProvider.clusterName
       - fromFieldPath: spec.id
         toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
       - fromFieldPath: spec.id
