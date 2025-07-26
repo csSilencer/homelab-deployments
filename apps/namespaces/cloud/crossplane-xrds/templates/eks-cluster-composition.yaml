@@ -269,6 +269,32 @@ spec:
         - type: string
           string:
             fmt: "%s-nodegroup"
+  - name: node-group-access-entry
+    base:
+      apiVersion: eks.aws.upbound.io/v1beta1
+      kind: AccessEntry
+      metadata:
+        name: node-group-access-entry
+      spec:
+        forProvider:
+          clusterNameSelector:
+            matchControllerRef: true
+          kubernetesGroups:
+            - system:bootstrappers
+            - system:nodes
+    patches:
+      - type: PatchSet
+        patchSetName: metadata
+      - fromFieldPath: spec.id
+        toFieldPath: spec.forProvider.clusterName
+      - fromFieldPath: spec.id
+        toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
+      - fromFieldPath: spec.id
+        toFieldPath: spec.forProvider.principalArnFromRoleSelector.matchLabels.name
+        transforms:
+        - type: string
+          string:
+            fmt: "%s-nodegroup"
   - name: iamattachment-cni
     base:
       apiVersion: iam.aws.upbound.io/v1beta1
