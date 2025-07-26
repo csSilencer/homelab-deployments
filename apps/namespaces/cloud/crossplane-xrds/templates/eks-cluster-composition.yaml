@@ -57,6 +57,8 @@ spec:
       toFieldPath: status.controlPlaneStatus
     - fromFieldPath: spec.writeConnectionSecretToRef.namespace
       toFieldPath: spec.writeConnectionSecretToRef.namespace
+    - fromFieldPath: spec.id
+      toFieldPath: metadata.labels.name
     readinessChecks:
     - type: MatchString
       fieldPath: status.atProvider.status
@@ -97,7 +99,9 @@ spec:
             medium: t3.medium
             large: t3.large
     - fromFieldPath: spec.id
-      toFieldPath: spec.forProvider.nodeRoleSelector.matchLabels.role
+      toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
+    - fromFieldPath: spec.id
+      toFieldPath: spec.forProvider.nodeRoleArnSelector.matchLabels.role
       transforms:
         - type: string
           string:
