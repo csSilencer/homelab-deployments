@@ -99,6 +99,8 @@ spec:
             medium: t3.medium
             large: t3.large
     - fromFieldPath: spec.id
+      toFieldPath: spec.forProvider.clusterName
+    - fromFieldPath: spec.id
       toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
     - fromFieldPath: spec.id
       toFieldPath: spec.forProvider.nodeRoleArnSelector.matchLabels.role
