@@ -6,4 +6,4 @@ helmCharts:
   releaseName: eks-cluster-xrd
   namespace: crossplane-xrds
   version: 0.0.0
-  path: eks-cluster-xrd
+  repo: eks-cluster-xrd
