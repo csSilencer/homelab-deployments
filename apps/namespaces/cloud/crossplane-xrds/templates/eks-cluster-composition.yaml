@@ -319,7 +319,7 @@ spec:
           enableDnsSupport: true
           enableDnsHostNames: true
           tags:
-            - key: Name
+            Name: placeholder
     patches:
     - type: PatchSet
       patchSetName: metadata
@@ -328,7 +328,7 @@ spec:
     - fromFieldPath: spec.parameters.vpc-cidrBlock
       toFieldPath: spec.forProvider.cidrBlock
     - fromFieldPath: spec.parameters.vpc-name
-      toFieldPath: spec.forProvider.tags[0].value
+      toFieldPath: spec.forProvider.tags.Name
 
   - name: internetgateway
     base:
@@ -342,7 +342,7 @@ spec:
             vpcIdSelector:
               matchControllerRef: true
             tags:
-              - key: Name
+              Name: placeholder
     patches:
         - type: PatchSet
           patchSetName: metadata
@@ -353,7 +353,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-igw"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
 
@@ -371,9 +371,8 @@ spec:
             vpcIdSelector:
               matchControllerRef: true
             tags:
-              - key: Name
-              - key: kubernetes.io/role/elb
-                value: "1"
+              Name: placeholder
+              kubernetes.io/role/elb: "1"
     patches:
         - type: CombineFromComposite
           combine:
@@ -383,7 +382,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-%s"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -409,9 +408,8 @@ spec:
             vpcIdSelector:
               matchControllerRef: true
             tags:
-              - key: Name
-              - key: kubernetes.io/role/elb
-                value: "1"
+              Name: placeholder
+              kubernetes.io/role/elb: "1"
     patches:
         - type: CombineFromComposite
           combine:
@@ -421,7 +419,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-%s"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -447,9 +445,8 @@ spec:
             vpcIdSelector:
               matchControllerRef: true
             tags:
-              - key: Name
-              - key: kubernetes.io/role/internal-elb
-                value: "1"
+              Name: placeholder
+              kubernetes.io/role/internal-elb: "1"
     patches:
         - type: CombineFromComposite
           combine:
@@ -459,7 +456,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-%s"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -485,9 +482,8 @@ spec:
             vpcIdSelector:
               matchControllerRef: true
             tags:
-              - key: Name
-              - key: kubernetes.io/role/internal-elb
-                value: "1"
+              Name: placeholder
+              kubernetes.io/role/internal-elb: "1"
     patches:
         - type: CombineFromComposite
           combine:
@@ -497,7 +493,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-%s"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -556,7 +552,7 @@ spec:
                 type: subnet
                 visibility: public
             tags:
-              - key: Name
+              Name: placeholder
     patches:
         - type: CombineFromComposite
           combine:
@@ -565,7 +561,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-nat-gateway-1"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -592,7 +588,7 @@ spec:
                 type: subnet
                 visibility: public
             tags:
-              - key: Name
+              Name: placeholder
     patches:
         - type: CombineFromComposite
           combine:
@@ -601,7 +597,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-nat-gateway-2"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -632,7 +628,7 @@ spec:
                     type: subnet
                     visibility: public
             tags:
-              - key: Name
+              Name: placeholder
     patches:
         - type: CombineFromComposite
           combine:
@@ -641,7 +637,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-public-route-table"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -670,7 +666,7 @@ spec:
                     type: subnet
                     visibility: private
             tags:
-              - key: Name
+              Name: placeholder
     patches:
         - type: CombineFromComposite
           combine:
@@ -679,7 +675,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-private-route-table-1"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
@@ -706,7 +702,7 @@ spec:
                     type: subnet
                     visibility: private
             tags:
-              - key: Name
+              Name: placeholder
     patches:
         - type: CombineFromComposite
           combine:
@@ -715,7 +711,7 @@ spec:
             strategy: string
             string:
               fmt: "%s-private-route-table-2"
-          toFieldPath: spec.forProvider.tags[0].value
+          toFieldPath: spec.forProvider.tags.Name
           policy:
             fromFieldPath: Required
         - type: PatchSet
