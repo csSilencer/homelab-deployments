@@ -18,7 +18,7 @@ spec:
   resources:
   - name: ekscluster
     base:
-      apiVersion: eks.aws.crossplane.io/v1beta1
+      apiVersion: eks.aws.upbound.io/v1beta2
       kind: Cluster
       spec:
         forProvider:
@@ -65,7 +65,7 @@ spec:
       - fromConnectionSecretKey: kubeconfig
   - name: eksnodegroup
     base:
-      apiVersion: eks.aws.crossplane.io/v1alpha1
+      apiVersion: eks.aws.upbound.io/v1beta2
       kind: NodeGroup
       spec:
         forProvider:
@@ -115,7 +115,7 @@ spec:
       matchString: ACTIVE
   - name: iamrole-controlplane
     base:
-      apiVersion: iam.aws.crossplane.io/v1beta1
+      apiVersion: iam.aws.upbound.io/v1beta1
       kind: Role
       spec:
         forProvider:
@@ -153,7 +153,7 @@ spec:
             fmt: "%s-controlplane"
   - name: iamrole-nodegroup
     base:
-      apiVersion: iam.aws.crossplane.io/v1beta1
+      apiVersion: iam.aws.upbound.io/v1beta1
       kind: Role
       spec:
         forProvider:
@@ -191,7 +191,7 @@ spec:
             fmt: "%s-nodegroup"
   - name: iamattachment-controlplane
     base:
-      apiVersion: iam.aws.crossplane.io/v1beta1
+      apiVersion: iam.aws.upbound.io/v1beta1
       kind: RolePolicyAttachment
       spec:
         forProvider:
@@ -215,7 +215,7 @@ spec:
             fmt: "%s-controlplane"
   - name: iamattachment-service
     base:
-      apiVersion: iam.aws.crossplane.io/v1beta1
+      apiVersion: iam.aws.upbound.io/v1beta1
       kind: RolePolicyAttachment
       spec:
         forProvider:
@@ -239,7 +239,7 @@ spec:
             fmt: "%s-controlplane"
   - name: iamattachment-worker
     base:
-      apiVersion: iam.aws.crossplane.io/v1beta1
+      apiVersion: iam.aws.upbound.io/v1beta1
       kind: RolePolicyAttachment
       spec:
         forProvider:
@@ -263,7 +263,7 @@ spec:
             fmt: "%s-nodegroup"
   - name: iamattachment-cni
     base:
-      apiVersion: iam.aws.crossplane.io/v1beta1
+      apiVersion: iam.aws.upbound.io/v1beta1
       kind: RolePolicyAttachment
       spec:
         forProvider:
@@ -287,7 +287,7 @@ spec:
             fmt: "%s-nodegroup"
   - name: iamattachment-registry
     base:
-      apiVersion: iam.aws.crossplane.io/v1beta1
+      apiVersion: iam.aws.upbound.io/v1beta1
       kind: RolePolicyAttachment
       spec:
         forProvider:
@@ -311,7 +311,7 @@ spec:
             fmt: "%s-nodegroup"
   - name: vpc-nodepool
     base:
-      apiVersion: ec2.aws.crossplane.io/v1beta1
+      apiVersion: ec2.aws.upbound.io/v1beta1
       kind: VPC
       spec:
         forProvider:
@@ -332,7 +332,7 @@ spec:
 
   - name: internetgateway
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: InternetGateway
         metadata:
           labels:
@@ -359,7 +359,7 @@ spec:
 
   - name: subnet-public-1
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: Subnet
         metadata:
           labels:
@@ -397,7 +397,7 @@ spec:
 
   - name: subnet-public-2
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: Subnet
         metadata:
           labels:
@@ -435,7 +435,7 @@ spec:
 
   - name: subnet-private-1
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: Subnet
         metadata:
           labels:
@@ -473,7 +473,7 @@ spec:
 
   - name: subnet-private-2
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: Subnet
         metadata:
           labels:
@@ -511,7 +511,7 @@ spec:
 
   - name: elastic-ip-1
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: Address
         metadata:
           labels:
@@ -525,7 +525,7 @@ spec:
 
   - name: elastic-ip-2
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: Address
         metadata:
           labels:
@@ -539,7 +539,7 @@ spec:
 
   - name: natgateway-1
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: NATGateway
         metadata:
           labels:
@@ -575,7 +575,7 @@ spec:
 
   - name: natgateway-2
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: NATGateway
         metadata:
           labels:
@@ -611,7 +611,7 @@ spec:
 
   - name: routetable-public
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: RouteTable
         spec:
           forProvider:
@@ -653,7 +653,7 @@ spec:
 
   - name: routetable-private-1
     base:
-        apiVersion: ec2.aws.crossplane.io/v1beta1
+        apiVersion: ec2.aws.upbound.io/v1beta1
         kind: RouteTable
         spec:
           forProvider:
