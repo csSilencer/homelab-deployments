@@ -765,7 +765,7 @@ spec:
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
         kind: RouteTable
-        matadata:
+        metadata:
           labels:
             type: rtb-priv-2
         spec:
