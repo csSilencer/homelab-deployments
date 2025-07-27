@@ -751,6 +751,7 @@ spec:
         forProvider:
           destinationCidrBlock: 0.0.0.0/0
           natGatewayIdSelector:
+            matchControllerRef: true
             matchLabels:
               type: natgw-1
           routeTableIdSelector:
@@ -803,6 +804,7 @@ spec:
         forProvider:
           destinationCidrBlock: 0.0.0.0/0
           natGatewayIdSelector:
+            matchControllerRef: true
             matchLabels:
               type: natgw-2
           routeTableIdSelector:
