@@ -701,6 +701,7 @@ spec:
             matchLabels:
               type: igw
           routeTableIdSelector:
+            matchControllerRef: true
             matchLabels:
               type: routetable
               visibility: public
@@ -753,6 +754,7 @@ spec:
             matchLabels:
               type: natgw-1
           routeTableIdSelector:
+            matchControllerRef: true
             matchLabels:
               type: rtb-priv-1
     patches:
@@ -804,6 +806,7 @@ spec:
             matchLabels:
               type: natgw-2
           routeTableIdSelector:
+            matchControllerRef: true
             matchLabels:
               type: rtb-priv-2
     patches:
