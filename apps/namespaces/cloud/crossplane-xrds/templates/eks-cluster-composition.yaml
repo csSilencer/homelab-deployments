@@ -66,11 +66,11 @@ spec:
       metadata:
         name: clusterauth
       spec:
-        forProvider:
-          region: us-west-1
         writeConnectionSecretToRef:
           namespace: cloud
     patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
       - fromFieldPath: spec.id
         toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
       - fromFieldPath: spec.id
