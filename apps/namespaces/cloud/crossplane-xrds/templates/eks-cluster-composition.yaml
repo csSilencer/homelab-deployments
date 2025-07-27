@@ -708,6 +708,29 @@ spec:
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
+  - name: rta-private-2
+    base:
+      apiVersion: ec2.aws.upbound.io/v1beta1
+      kind: RouteTableAssociation
+      metadata:
+        labels:
+          testing.upbound.io/example-name: rta
+        name: rta
+      spec:
+        forProvider:
+          routeTableIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: routetable
+              visibility: public
+          subnetIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: subnet
+              visibility: public
+    patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
   - name: routetable-private-1
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
@@ -761,6 +784,28 @@ spec:
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
+  - name: rta-private-1
+    base:
+      apiVersion: ec2.aws.upbound.io/v1beta1
+      kind: RouteTableAssociation
+      metadata:
+        labels:
+          testing.upbound.io/example-name: rta
+        name: rta
+      spec:
+        forProvider:
+          routeTableIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: rtb-priv-1
+          subnetIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: subnet
+              visibility: private
+    patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
   - name: routetable-private-2
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
@@ -811,6 +856,28 @@ spec:
             matchControllerRef: true
             matchLabels:
               type: rtb-priv-2
+    patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
+  - name: rta-private-2
+    base:
+      apiVersion: ec2.aws.upbound.io/v1beta1
+      kind: RouteTableAssociation
+      metadata:
+        labels:
+          testing.upbound.io/example-name: rta
+        name: rta
+      spec:
+        forProvider:
+          routeTableIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: rtb-priv-2
+          subnetIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: subnet
+              visibility: private
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
