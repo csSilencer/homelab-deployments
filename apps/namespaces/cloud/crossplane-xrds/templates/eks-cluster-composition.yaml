@@ -74,7 +74,7 @@ spec:
       - fromFieldPath: spec.id
         toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
       - fromFieldPath: spec.id
-        toFieldPath: spec.forProvider.writeConnectionSecretToRef.name
+        toFieldPath: spec.writeConnectionSecretToRef.name
         transforms:
           - type: string
             string:
