@@ -40,12 +40,6 @@ spec:
     - fromFieldPath: spec.id
       toFieldPath: metadata.name
     - fromFieldPath: spec.id
-      toFieldPath: spec.writeConnectionSecretToRef.name
-      transforms:
-        - type: string
-          string:
-            fmt: "%s-cluster"
-    - fromFieldPath: spec.id
       toFieldPath: spec.forProvider.roleArnSelector.matchLabels.role
       transforms:
         - type: string
@@ -57,8 +51,6 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: status.atProvider.status
       toFieldPath: status.controlPlaneStatus
-    - fromFieldPath: spec.writeConnectionSecretsToNamespace
-      toFieldPath: spec.writeConnectionSecretToRef.namespace
     - fromFieldPath: spec.id
       toFieldPath: metadata.labels.name
     readinessChecks:
@@ -67,6 +59,26 @@ spec:
       matchString: ACTIVE
     connectionDetails:
       - fromConnectionSecretKey: kubeconfig
+  - name: clusterauth
+    base:
+      apiVersion: eks.aws.upbound.io/v1beta1
+      kind: ClusterAuth
+      metadata:
+        name: clusterauth
+      spec:
+        forProvider:
+          region: us-west-1
+        writeConnectionSecretToRef:
+          namespace: cloud
+    patches:
+      - fromFieldPath: spec.id
+        toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
+      - fromFieldPath: spec.id
+        toFieldPath: spec.forProvider.writeConnectionSecretToRef.name
+        transforms:
+          - type: string
+            string:
+              fmt: "%s-cluster"
   - name: eksnodegroup
     base:
       apiVersion: eks.aws.upbound.io/v1beta2
@@ -281,9 +293,6 @@ spec:
         forProvider:
           clusterNameSelector:
             matchControllerRef: true
-          kubernetesGroups:
-            - system:bootstrappers
-            - system:nodes
           principalArnFromRoleRef:
             name: placeholder
           principalArnFromRoleSelector:
@@ -305,6 +314,22 @@ spec:
         - type: string
           string:
             fmt: "%s-nodegroup"
+  - name: ristovi-access-entry
+    base:
+      apiVersion: eks.aws.upbound.io/v1beta1
+      kind: AccessEntry
+      metadata:
+        name: ristovi-access-entry
+      spec:
+        forProvider:
+          clusterNameSelector:
+            matchControllerRef: true
+          principalArn: arn:aws:iam::342147284271:user/ristovi
+    patches:
+      - type: PatchSet
+        patchSetName: metadata
+      - fromFieldPath: spec.id
+        toFieldPath: spec.forProvider.clusterNameSelector.matchLabels.name
   - name: iamattachment-cni
     base:
       apiVersion: iam.aws.upbound.io/v1beta1
