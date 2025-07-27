@@ -648,20 +648,18 @@ spec:
           patchSetName: metadata
         - fromFieldPath: spec.parameters.subnet2-public-availabilityZone
           toFieldPath: spec.forProvider.subnetIdSelector.matchLabels.zone
-
   - name: routetable-public
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
         kind: RouteTable
+        metadata:
+          labels:
+            type: routetable
+            visibility: public
         spec:
           forProvider:
             vpcIdSelector:
               matchControllerRef: true
-            routes:
-              - destinationCidrBlock: 0.0.0.0/0
-                gatewayIdSelector:
-                  matchLabels:
-                    type: igw
             associations:
               - subnetIdSelector:
                   matchLabels:
@@ -690,20 +688,36 @@ spec:
           toFieldPath: spec.forProvider.associations[0].subnetIdSelector.matchLabels.zone
         - fromFieldPath: spec.parameters.subnet2-public-availabilityZone
           toFieldPath: spec.forProvider.associations[1].subnetIdSelector.matchLabels.zone
-
+  - name: routetable-public-route-igw
+    base:
+      apiVersion: ec2.aws.upbound.io/v1beta2
+      kind: Route
+      metadata:
+        name: routetable-public-route-igw
+      spec:
+        forProvider:
+          destinationCidrBlock: 0.0.0.0/0
+          gatewayIdSelector:
+            matchLabels:
+              type: igw
+          routeTableIdSelector:
+            matchLabels:
+              type: routetable
+              visibility: public
+    patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
   - name: routetable-private-1
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
         kind: RouteTable
+        metadata:
+          annotations:
+            type: rtb-priv-1
         spec:
           forProvider:
             vpcIdSelector:
               matchControllerRef: true
-            routes:
-              - destinationCidrBlock: 0.0.0.0/0
-                natGatewayIdSelector:
-                  matchLabels:
-                    type: natgw-1
             associations:
               - subnetIdSelector:
                   matchLabels:
@@ -726,20 +740,35 @@ spec:
           patchSetName: metadata
         - fromFieldPath: spec.parameters.subnet1-private-availabilityZone
           toFieldPath: spec.forProvider.associations[0].subnetIdSelector.matchLabels.zone
-
+  - name: routetable-private-route-natgw-1
+    base:
+      apiVersion: ec2.aws.upbound.io/v1beta2
+      kind: Route
+      metadata:
+        name: routetable-private-route-natgw
+      spec:
+        forProvider:
+          destinationCidrBlock: 0.0.0.0/0
+          natGatewayIdSelector:
+            matchLabels:
+              type: natgw-1
+          routeTableIdSelector:
+            matchLabels:
+              type: rtb-priv-1
+    patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
   - name: routetable-private-2
     base:
         apiVersion: ec2.aws.upbound.io/v1beta1
         kind: RouteTable
+        matadata:
+          labels:
+            type: rtb-priv-2
         spec:
           forProvider:
             vpcIdSelector:
               matchControllerRef: true
-            routes:
-              - destinationCidrBlock: 0.0.0.0/0
-                natGatewayIdSelector:
-                  matchLabels:
-                    type: natgw-2
             associations:
               - subnetIdSelector:
                   matchLabels:
@@ -762,6 +791,24 @@ spec:
           patchSetName: metadata
         - fromFieldPath: spec.parameters.subnet2-private-availabilityZone
           toFieldPath: spec.forProvider.associations[0].subnetIdSelector.matchLabels.zone
+  - name: routetable-private-route-natgw-2
+    base:
+      apiVersion: ec2.aws.upbound.io/v1beta2
+      kind: Route
+      metadata:
+        name: routetable-private-route-natgw
+      spec:
+        forProvider:
+          destinationCidrBlock: 0.0.0.0/0
+          natGatewayIdSelector:
+            matchLabels:
+              type: natgw-2
+          routeTableIdSelector:
+            matchLabels:
+              type: rtb-priv-2
+    patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
   - name: helm
     base:
       apiVersion: helm.crossplane.io/v1beta1
