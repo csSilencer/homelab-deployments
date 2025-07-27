@@ -409,7 +409,7 @@ spec:
           labels:
             type: subnet
             visibility: public
-            id: 1
+            subid: 1
         spec:
           forProvider:
             mapPublicIpOnLaunch: true
@@ -447,7 +447,7 @@ spec:
           labels:
             type: subnet
             visibility: public
-            id: 2
+            subid: 2
         spec:
           forProvider:
             mapPublicIpOnLaunch: true
@@ -485,7 +485,7 @@ spec:
           labels:
             type: subnet
             visibility: private
-            id: 1
+            subid: 1
         spec:
           forProvider:
             mapPublicIpOnLaunch: false
@@ -523,7 +523,7 @@ spec:
           labels:
             type: subnet
             visibility: private
-            id: 2
+            subid: 2
         spec:
           forProvider:
             mapPublicIpOnLaunch: false
@@ -599,7 +599,7 @@ spec:
               matchLabels:
                 type: subnet
                 visibility: public
-                id: 1
+                subid: 1
             tags:
               Name: placeholder
     patches:
@@ -635,7 +635,7 @@ spec:
               matchLabels:
                 type: subnet
                 visibility: public
-                id: 2
+                subid: 2
             tags:
               Name: placeholder
     patches:
@@ -790,7 +790,7 @@ spec:
             matchLabels:
               type: subnet
               visibility: private
-              id: 1
+              subid: 1
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
@@ -859,7 +859,7 @@ spec:
             matchLabels:
               type: subnet
               visibility: private
-              id: 2
+              subid: 2
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
