@@ -708,14 +708,12 @@ spec:
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
-  - name: rta-private-2
+  - name: rta-public
     base:
       apiVersion: ec2.aws.upbound.io/v1beta1
       kind: RouteTableAssociation
       metadata:
-        labels:
-          testing.upbound.io/example-name: rta
-        name: rta
+        name: rta-public
       spec:
         forProvider:
           routeTableIdSelector:
@@ -789,9 +787,7 @@ spec:
       apiVersion: ec2.aws.upbound.io/v1beta1
       kind: RouteTableAssociation
       metadata:
-        labels:
-          testing.upbound.io/example-name: rta
-        name: rta
+        name: rta-private-1
       spec:
         forProvider:
           routeTableIdSelector:
@@ -864,9 +860,7 @@ spec:
       apiVersion: ec2.aws.upbound.io/v1beta1
       kind: RouteTableAssociation
       metadata:
-        labels:
-          testing.upbound.io/example-name: rta
-        name: rta
+        name: rta-private-2
       spec:
         forProvider:
           routeTableIdSelector:
