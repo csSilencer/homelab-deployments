@@ -713,7 +713,7 @@ spec:
         apiVersion: ec2.aws.upbound.io/v1beta1
         kind: RouteTable
         metadata:
-          annotations:
+          labels:
             type: rtb-priv-1
         spec:
           forProvider:
