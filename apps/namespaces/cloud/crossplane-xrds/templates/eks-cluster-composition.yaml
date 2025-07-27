@@ -704,12 +704,12 @@ spec:
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
-  - name: rta-public
+  - name: rta-public-1
     base:
       apiVersion: ec2.aws.upbound.io/v1beta1
       kind: RouteTableAssociation
       metadata:
-        name: rta-public
+        name: rta-public-1
       spec:
         forProvider:
           routeTableIdSelector:
@@ -722,6 +722,29 @@ spec:
             matchLabels:
               type: subnet
               visibility: public
+              subid: "1"
+    patches:
+      - fromFieldPath: "spec.parameters.region"
+        toFieldPath: "spec.forProvider.region"
+  - name: rta-public-2
+    base:
+      apiVersion: ec2.aws.upbound.io/v1beta1
+      kind: RouteTableAssociation
+      metadata:
+        name: rta-public-2
+      spec:
+        forProvider:
+          routeTableIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: routetable
+              visibility: public
+          subnetIdSelector:
+            matchControllerRef: true
+            matchLabels:
+              type: subnet
+              visibility: public
+              subid: "2"
     patches:
       - fromFieldPath: "spec.parameters.region"
         toFieldPath: "spec.forProvider.region"
